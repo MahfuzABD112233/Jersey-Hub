@@ -22,4 +22,7 @@ staticfiles/
 
 # OS files
 .DS_Store
-Thumbs.db
+Thumbs.
+
+# Local data export / database fixture
+data.json
