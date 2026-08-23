@@ -1,0 +1,127 @@
+{% extends 'store/base.html' %}
+
+{% block title %}
+Jersey Hub
+{% endblock %}
+
+{% block content %}
+
+<section class="home-hero">
+
+    <div class="hero-content">
+
+        <p class="hero-tag">
+            PREMIUM FOOTBALL JERSEYS
+        </p>
+
+        <h1>
+            Wear Your Passion.
+            <span>Own Your Club.</span>
+        </h1>
+
+        <p class="hero-description">
+            Discover the latest football jerseys and support
+            your favorite club in style.
+        </p>
+
+        <div class="hero-actions">
+
+            <a href="{% url 'product_list' %}" class="btn hero-btn">
+                Shop Now
+            </a>
+
+            <a href="#featured" class="outline-btn">
+                View Collection
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="hero-visual">
+
+        <div class="floating-circle circle-one"></div>
+        <div class="floating-circle circle-two"></div>
+
+        <div class="jersey-card">
+            <span>JERSEY</span>
+            <strong>HUB</strong>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="featured" class="featured-section">
+
+    <div class="section-heading">
+        <p>OUR COLLECTION</p>
+        <h2>Featured Jerseys</h2>
+    </div>
+
+    <div class="featured-grid">
+
+        {% for product in featured_products %}
+
+            <div class="featured-card">
+
+                {% if product.image_url %}
+                    <img
+                        src="{{ product.image_url }}"
+                        alt="{{ product.name }}"
+                    >
+                {% endif %}
+
+                <h3>{{ product.name }}</h3>
+
+                <p class="price">
+                    ৳{{ product.price }}
+                </p>
+
+                <a
+                    href="{% url 'product_detail' product.id %}"
+                    class="btn"
+                >
+                    View Jersey
+                </a>
+
+            </div>
+
+        {% empty %}
+
+            <p>No featured jerseys available.</p>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+<section class="benefits-section">
+
+    <div class="benefit-card">
+        <h3>Latest Jerseys</h3>
+        <p>
+            Explore new football jersey collections and designs.
+        </p>
+    </div>
+
+    <div class="benefit-card">
+        <h3>Easy Shopping</h3>
+        <p>
+            Browse, search and add your favorite jersey to cart.
+        </p>
+    </div>
+
+    <div class="benefit-card">
+        <h3>Simple Checkout</h3>
+        <p>
+            Complete your order using a simple checkout process.
+        </p>
+    </div>
+
+</section>
+
+{% endblock %}

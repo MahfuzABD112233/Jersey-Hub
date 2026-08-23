@@ -1,0 +1,66 @@
+{% extends 'store/base.html' %}
+
+{% block title %}
+Order #{{ order.id }} | Jersey Hub
+{% endblock %}
+
+{% block content %}
+
+<div style="
+    max-width: 750px;
+    margin: 50px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+">
+
+    <h1>Order #{{ order.id }}</h1>
+
+    <p>
+        Status:
+        <strong>{{ order.status }}</strong>
+    </p>
+
+    <p>
+        Order Date:
+        {{ order.created_at }}
+    </p>
+
+    <hr>
+
+    <h2>Order Items</h2>
+
+    {% for item in order.items.all %}
+
+        <div style="
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+        ">
+
+            <div>
+                <strong>{{ item.product.name }}</strong>
+                <br>
+                Quantity: {{ item.quantity }}
+            </div>
+
+            <div>
+                ৳{{ item.unit_price }}
+            </div>
+
+        </div>
+
+    {% endfor %}
+
+    <h2 style="text-align: right;">
+        Total: ৳{{ order.total_amount }}
+    </h2>
+
+    <a href="{% url 'product_list' %}" class="btn">
+        Continue Shopping
+    </a>
+
+</div>
+
+{% endblock %}

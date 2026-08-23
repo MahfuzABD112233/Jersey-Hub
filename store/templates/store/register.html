@@ -1,0 +1,70 @@
+{% extends 'store/base.html' %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block content %}
+
+<div style="
+    max-width: 500px;
+    margin: 50px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+">
+
+    <h1>Create Account</h1>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <label>Username</label>
+        <input
+            type="text"
+            name="username"
+            required
+            style="width:100%; padding:12px; margin:8px 0 15px;"
+        >
+
+        <label>Email</label>
+        <input
+            type="email"
+            name="email"
+            required
+            style="width:100%; padding:12px; margin:8px 0 15px;"
+        >
+
+        <label>Password</label>
+        <input
+            type="password"
+            name="password"
+            required
+            style="width:100%; padding:12px; margin:8px 0 15px;"
+        >
+
+        <label>Confirm Password</label>
+        <input
+            type="password"
+            name="confirm_password"
+            required
+            style="width:100%; padding:12px; margin:8px 0 20px;"
+        >
+
+        <button type="submit" class="btn">
+            Register
+        </button>
+
+    </form>
+
+    <p style="margin-top:20px;">
+        Already have an account?
+        <a href="{% url 'login' %}">
+            Login
+        </a>
+    </p>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'store/base.html' %}
+
+{% block title %}
+{{ product.name }}
+{% endblock %}
+
+{% block content %}
+
+<div style="
+    background: white;
+    margin-top: 40px;
+    padding: 30px;
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+">
+
+    <div>
+
+        {% if product.image_url %}
+
+            <img
+                src="{{ product.image_url }}"
+                alt="{{ product.name }}"
+                style="
+                    width: 100%;
+                    max-height: 500px;
+                    object-fit: contain;
+                "
+            >
+
+        {% endif %}
+
+    </div>
+
+    <div>
+
+        <h1>
+            {{ product.name }}
+        </h1>
+
+        <p>
+            {{ product.description }}
+        </p>
+
+        <h2 class="price">
+            ৳{{ product.price }}
+        </h2>
+
+        <p>
+            Stock:
+            <strong>{{ product.stock }}</strong>
+        </p>
+
+<a
+    href="{% url 'add_to_cart' product.id %}"
+    class="btn"
+>
+    Add to Cart
+</a>
+
+    </div>
+
+</div>
+
+{% endblock %}
